@@ -5,7 +5,18 @@ const LAIKA_TOKEN = core.getInput('LAIKA_TOKEN');
 const LAIKA_ENDPOINT = core.getInput('LAIKA_ENDPOINT');
 const LAIKA_DEPLOY_REF = core.getInput('LAIKA_DEPLOY_REF');
 
-handleFlowAction().then(r => console.log(`${workflowAction} was run!`));
+const deployClusterRepo = async () => {
+  const requestOptions = {
+    method: 'PUT',
+    headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${LAIKA_TOKEN}`
+    },
+    body: JSON.stringify({ deploy_ref: LAIKA_DEPLOY_REF }),
+  };
+
+  return await fetch(LAIKA_ENDPOINT, requestOptions);
+};
 
 const handleFlowAction = async () => {
   switch (workflowAction) {
@@ -22,15 +33,4 @@ const handleFlowAction = async () => {
   }
 };
 
-const deployClusterRepo = async () => {
-  const requestOptions = {
-    method: 'PUT',
-    headers: { 
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${LAIKA_TOKEN}`
-    },
-    body: JSON.stringify({ deploy_ref: LAIKA_DEPLOY_REF }),
-  };
-
-  return await fetch(LAIKA_ENDPOINT, requestOptions);
-};
+handleFlowAction().then(r => console.log(`${workflowAction} was run!`));
