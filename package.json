@@ -20,6 +20,7 @@
   "homepage": "https://github.com/allermedia/se-labrador-miscactions#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^5.0.1"
+    "@actions/github": "^5.0.1",
+    "node-fetch": "^3.2.10"
   }
 }

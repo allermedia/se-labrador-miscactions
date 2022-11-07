@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import fetch from "node-fetch";
 
 const workflowAction = core.getInput('WORKFLOW_ACTION');
 const LAIKA_TOKEN = core.getInput('LAIKA_TOKEN');
