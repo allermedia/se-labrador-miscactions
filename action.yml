@@ -1,0 +1,18 @@
+name: 'Aller Sweden Labrador GitHub various Actions'
+description: 'A set of various GitHub Actions to support automation within the Labrador sites for Aller Media Sweden'
+inputs:
+  WORKFLOW_ACTION:
+    description: 'What the action should do'
+    required: true
+  LAIKA_TOKEN:
+    description: 'API Access key for deployment of cluster repositories'
+    required: false
+  LAIKA_ENDPOINT:
+    description: 'API Endpoint used to start deploy'
+    required: false
+  LAIKA_DEPLOY_REF:
+    description: 'Deploy which branch to the cluster'
+    required: false
+runs:
+  using: 'node16'
+  main: 'index.js' 
